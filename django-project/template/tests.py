@@ -50,15 +50,15 @@ class OptionalFrontendTests(SimpleTestCase):
         with tempfile.TemporaryDirectory() as directory:
             manifest = Path(directory) / 'manifest.json'
             manifest.write_text(json.dumps({'entries': {'index': {'initial': {
-                'js': ['/static/js/index.js'], 'css': ['/static/css/index.css'],
+                'js': ['/js/index.js'], 'css': ['/css/index.css'],
             }}}}))
             with override_settings(
                 FRONTEND_ENABLED=True, RSBUILD_MANIFEST=manifest,
                 RSBUILD_BASE_URL='/template/static/',
             ):
                 response = self.client.get('/')
-        self.assertContains(response, '<script defer src="/template/static/static/js/index.js"></script>', html=True)
-        self.assertContains(response, '<link rel="stylesheet" href="/template/static/static/css/index.css">', html=True)
+        self.assertContains(response, '<script defer src="/template/static/js/index.js"></script>', html=True)
+        self.assertContains(response, '<link rel="stylesheet" href="/template/static/css/index.css">', html=True)
 
 
 class RuntimeSettingsTests(SimpleTestCase):
