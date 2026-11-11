@@ -26,7 +26,9 @@
 
 ## Frontend layout and typography
 
-- Respect the existing Every Layout CSS in `typescript-frontend/src/everylayout/`. Use its primitives and utilities wherever applicable instead of reimplementing layouts. Configure their custom properties for spacing, measures, gaps, and responsive behavior.
+- Before frontend layout or design work, add the user-provided `every-layout.pdf` as context (the current local copy is `~/Dokumenter/every-layout.pdf`). If it is unavailable, ask for its location rather than assuming it has been loaded. Keep the PDF and extracted text out of Git.
+- Use the existing Every Layout primitives in `typescript-frontend/src/everylayout/` wherever possible instead of reimplementing layouts. Configure their custom properties for spacing, measures, gaps, and responsive behavior.
+- Compose existing utility classes before writing custom component CSS. Where practical, add a small reusable utility class to the existing utility stylesheets if the required behavior is missing; resort to fully custom CSS only when primitives and utilities cannot reasonably express the design.
 - Limit custom styling to what is necessary for the intended look, such as branding, typography, and decoration. Do not retain redundant layout declarations already supplied by Every Layout.
 - Inherit the `125%` font size already supplied by Every Layout's `base.css`. Do not override or redeclare it in application styles, and do not change the base to compensate for application styling.
-- Avoid tiny text: body and menu copy, navigation, labels, notices, and credits should inherit the default size or use at least `1rem`. Do not introduce smaller mobile overrides. Preserve a clear heading hierarchy and check narrow screens and enlarged text for readable wrapping without clipping or horizontal overflow.
+- Avoid tiny text: body and menu copy, navigation, labels, notices, and credits should generally inherit the default size or use at least `1rem`. Modest mobile reductions are acceptable where they improve the layout without compromising readability; prefer reflow and spacing adjustments over shrinking text to force a fit. Preserve a clear heading hierarchy and check narrow screens and enlarged text for readable wrapping without clipping or horizontal overflow.
