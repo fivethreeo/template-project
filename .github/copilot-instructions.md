@@ -23,3 +23,10 @@
 - Runtime configuration is environment-based in `template/local_settings.py`. Use the `DJANGO_*` variables for debug mode, secret key, hosts, database, static root, and CORS settings rather than editing committed settings for deployments. A non-debug process requires `DJANGO_SECRET_KEY`.
 - Development CORS is disabled by default. Django does not load `django-cors-headers` unless `DJANGO_CORS_ALLOWED_ORIGINS` is set; enable Rsbuild asset CORS with `RSBUILD_CORS_ORIGIN`. Set either or both explicitly as needed. `PUBLIC_HOST` drives `RSBUILD_BASE_URL` and the HMR WebSocket host.
 - TypeScript uses native ESM/bundler resolution and treats unused locals and parameters as errors. Keep frontend source under `typescript-frontend/src`; the generated `dist` contents are build output.
+
+## Frontend layout and typography
+
+- Respect the existing Every Layout CSS in `typescript-frontend/src/everylayout/`. Use its primitives and utilities wherever applicable instead of reimplementing layouts. Configure their custom properties for spacing, measures, gaps, and responsive behavior.
+- Limit custom styling to what is necessary for the intended look, such as branding, typography, and decoration. Do not retain redundant layout declarations already supplied by Every Layout.
+- Inherit the `125%` font size already supplied by Every Layout's `base.css`. Do not override or redeclare it in application styles, and do not change the base to compensate for application styling.
+- Avoid tiny text: body and menu copy, navigation, labels, notices, and credits should inherit the default size or use at least `1rem`. Do not introduce smaller mobile overrides. Preserve a clear heading hierarchy and check narrow screens and enlarged text for readable wrapping without clipping or horizontal overflow.
