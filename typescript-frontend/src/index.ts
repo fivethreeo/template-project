@@ -5,15 +5,15 @@ initEveryLayout();
 
 document.body.classList.add('with-js');
 
-const docsNavToggle = document.querySelector<HTMLElement>('.docs-nav-toggle');
-const docsNav = document.querySelector<HTMLElement>('.docs-nav');
+const mainNavToggle = document.querySelector<HTMLElement>('.main-nav-toggle');
+const mainNav = document.querySelector<HTMLElement>('.main-nav');
 
-if (docsNavToggle && docsNav) {
-  docsNavToggle.hidden = false;
-  docsNav.hidden = docsNavToggle.getAttribute('aria-expanded') !== 'true';
-  docsNavToggle.addEventListener('click', () => {
-    const expanded = docsNavToggle.getAttribute('aria-expanded') === 'true';
-    docsNavToggle.setAttribute('aria-expanded', String(!expanded));
-    docsNav.hidden = expanded;
+if (mainNavToggle && mainNav) {
+  mainNavToggle.hidden = false;
+  mainNav.hidden = mainNavToggle.getAttribute('aria-expanded') !== 'true';
+  mainNavToggle.addEventListener('click', () => {
+    const expanded = mainNavToggle.getAttribute('aria-expanded') === 'true';
+    mainNavToggle.setAttribute('aria-expanded', String(!expanded));
+    mainNav.hidden = expanded;
   });
 }
