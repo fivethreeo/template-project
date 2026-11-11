@@ -3,7 +3,9 @@ import './index.scss';
 
 initEveryLayout();
 
-document.body.classList.add('with-js');
+const cl = document.body.classList;
+cl.remove('no-js');
+cl.add('with-js');
 
 const mainNavToggle = document.querySelector<HTMLElement>('.main-nav-toggle');
 const mainNav = document.querySelector<HTMLElement>('.main-nav');
